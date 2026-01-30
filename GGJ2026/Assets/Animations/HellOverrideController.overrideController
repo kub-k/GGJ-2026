@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HellOverrideController
+  m_Controller: {fileID: 9100000, guid: 87833a81b8d4dc24ca14448a609605b3, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0cca7f02b84962e468bb88a7da04aa64, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e621aab574b1e8b42a82e9f37cbfe8ec, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 225c1f37767aea64882d3f6be2a45059, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9fb05d31a6a9b3640af384c8711721a9, type: 2}

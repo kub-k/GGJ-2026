@@ -10,17 +10,20 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     
     BoxCollider2D _myFeetCollider;
+    Animator _animator;
     
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _myFeetCollider = GetComponent<BoxCollider2D>();
+        _animator = GetComponent<Animator>();
     }
     
     void Update()
     {
         Run();
         FlipSprite();
+        Die();
     }
 
     void OnMove(InputValue value)
@@ -30,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     
     void OnJump(InputValue value)
     {
-        if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return;}
+        if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellGround", "HeavenGround"))) { return;}
         
         if(value.isPressed)
         {
@@ -43,8 +46,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 playerVelocity = new Vector2 (_moveInput.x * runSpeed, _rb.linearVelocity.y);
         _rb.linearVelocity = playerVelocity;
-        //bool playerHasHorizontalSpeed = Mathf.Abs(_rb.linearVelocity.x) > Mathf.Epsilon;
-        //for animation 
+        
+        bool playerHasHorizontalSpeed = Mathf.Abs(_rb.linearVelocity.x) > Mathf.Epsilon;
+        _animator.SetBool("isRunning", playerHasHorizontalSpeed);
 
     }
     
@@ -56,6 +60,13 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector2 (Mathf.Sign(_rb.linearVelocity.x), 1f);
         }
+    }
+    
+    void Die()
+    {
+        if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")) ) return;
+        Debug.Log("you died!");
+        
     }
 
 }

@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - 
-  - 
-  - 
+  - HeavenGround
+  - HellGround
+  - HellObstacles
+  - Player
   - 
   - 
   - 
@@ -40,6 +40,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obstacles
+    uniqueID: 1218691599
+    locked: 0
+  - name: Ground
+    uniqueID: 403341939
     locked: 0
   m_RenderingLayers:
   - Default
