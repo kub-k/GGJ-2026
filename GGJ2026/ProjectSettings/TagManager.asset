@@ -41,11 +41,26 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: 1Bg
+    uniqueID: 1680255169
+    locked: 0
+  - name: 2Bg
+    uniqueID: 3831491185
+    locked: 0
+  - name: 3Bg
+    uniqueID: 1679963081
+    locked: 0
+  - name: 4Bg
+    uniqueID: 3755750895
+    locked: 0
   - name: Obstacles
     uniqueID: 1218691599
     locked: 0
   - name: Ground
     uniqueID: 403341939
+    locked: 0
+  - name: Player
+    uniqueID: 1195812453
     locked: 0
   m_RenderingLayers:
   - Default
