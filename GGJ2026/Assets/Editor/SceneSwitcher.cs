@@ -21,17 +21,22 @@ public static class SceneSwitcher
         EditorSceneManager.OpenScene("Assets/Scenes/EntranceScene.unity");
     }
     
-    /*
-    [MenuItem("Scenes/Main Menu")]
-    public static void OpenMainMenu()
+    [MenuItem("Scenes/Level 1 Scene")]
+    public static void OpenLevel1Scene()
     {
-        EditorSceneManager.OpenScene("Assets/Scenes/MainMenu.unity");
+        EditorSceneManager.OpenScene("Assets/Scenes/Level1Scene.unity");
     }
-
-    [MenuItem("Scenes/Levels/Level 1")]
-    public static void OpenLevel1()
+    
+    [MenuItem("Scenes/Level 2  Scene")]
+    public static void OpenLevel2Scene()
     {
-        EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
+        EditorSceneManager.OpenScene("Assets/Scenes/Level2Scene.unity");
     }
-    */
+        
+    [MenuItem("Scenes/Level 3 Scene")]
+    public static void OpenLevel3Scene()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Level3Scene.unity");
+    }
+    
 }
