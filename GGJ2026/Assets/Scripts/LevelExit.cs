@@ -1,16 +1,31 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelExit : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    bool _levelExited = false;
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Player") && !_levelExited)
+        {
+            _levelExited = true;
+            StartCoroutine(LoadNextLevel());
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator LoadNextLevel()
     {
+        yield return new WaitForSecondsRealtime(1f);
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         
+        
+        if (nextSceneIndex != SceneManager.sceneCountInBuildSettings)
+        {
+            FindFirstObjectByType<ScenePersist>().ResetScene();
+            SceneManager.LoadScene(nextSceneIndex);
+        } 
+            
     }
 }

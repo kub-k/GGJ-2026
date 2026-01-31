@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -98,7 +99,15 @@ public class PlayerMovement : MonoBehaviour
         _isAlive = false;
         _rb.linearVelocity = new Vector2 (0, 0);
         _rb.linearVelocity = deathKick;
+        StartCoroutine(WaitForDeath());
         Debug.Log("you died");
+    }
+    
+    IEnumerator WaitForDeath()
+    {
+        //we need to wait a little bit before death, so our animation can play
+        yield return new WaitForSeconds(2f);
+        FindFirstObjectByType<GameSession>().ProcessPlayerDeath();
     }
 
 }
