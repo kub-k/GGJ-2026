@@ -66,7 +66,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.001036644, y: -0.34433597}
+  m_Offset: {x: 0.019383192, y: -0.5724304}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.31220818, y: 0.11335087}
+  m_Size: {x: 0.4551463, y: 0.13391924}
   m_EdgeRadius: 0
 --- !u!1 &3406878187356269892
 GameObject:
@@ -177,7 +177,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.054811478, y: -0.37661868}
+  m_Offset: {x: 0.13478851, y: -0.6471796}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -187,7 +187,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.42752552, y: 0.19415653}
+  m_Size: {x: 0.5874796, y: 0.23839903}
   m_EdgeRadius: 0
 --- !u!1 &4504460225630673836
 GameObject:
@@ -255,8 +255,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.008120537, y: 0.04429522}
-  m_Size: {x: 0.37819672, y: 0.76524574}
+  m_Offset: {x: 0.008120537, y: 0.033930898}
+  m_Size: {x: 0.37819672, y: 1.1487238}
   m_Direction: 0
 --- !u!1 &4895916937645489752
 GameObject:
@@ -324,8 +324,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.024360418, y: 0.061787218}
-  m_Size: {x: 0.59744215, y: 0.87642556}
+  m_Offset: {x: 0.05328846, y: 0.070295334}
+  m_Size: {x: 0.65529823, y: 1.3222556}
   m_Direction: 0
 --- !u!1 &6742545206923439560
 GameObject:
@@ -443,8 +443,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1195812453
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 38c8c3d0a34366a4d8ce6de868685a4e, type: 3}
