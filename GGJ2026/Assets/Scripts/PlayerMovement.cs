@@ -9,13 +9,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _moveInput;
     private Rigidbody2D _rb;
     
-    BoxCollider2D _myFeetCollider;
+    private BoxCollider2D CurrentFeetCollider => GetActiveCollider();
     Animator _animator;
     
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _myFeetCollider = GetComponent<BoxCollider2D>();
         _animator = GetComponent<Animator>();
     }
     
@@ -25,6 +24,18 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         Die();
     }
+    
+    private BoxCollider2D GetActiveCollider()
+    {
+        // Alt objelerdeki tüm BoxCollider2D'leri tara
+        BoxCollider2D[] colliders = GetComponentsInChildren<BoxCollider2D>();
+        foreach (var col in colliders)
+        {
+            // Hangi obje aktifse (DimensionManager tarafından açılmışsa) onu döndür
+            if (col.gameObject.activeInHierarchy) return col;
+        }
+        return null;
+    }
 
     void OnMove(InputValue value)
     {
@@ -33,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     
     void OnJump(InputValue value)
     {
-        if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellGround", "HeavenGround"))) { return;}
+        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellGround", "HeavenGround"))) { return;}
         
         if(value.isPressed)
         {
@@ -64,9 +75,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Die()
     {
-        if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")) ) return;
+        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")) ) return;
         Debug.Log("you died!");
-        
     }
 
 }
