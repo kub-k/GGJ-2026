@@ -53,11 +53,11 @@ TagManager:
   - name: 4Bg
     uniqueID: 3755750895
     locked: 0
-  - name: Obstacles
-    uniqueID: 1218691599
-    locked: 0
   - name: Ground
     uniqueID: 403341939
+    locked: 0
+  - name: Obstacles
+    uniqueID: 1218691599
     locked: 0
   - name: Player
     uniqueID: 1195812453

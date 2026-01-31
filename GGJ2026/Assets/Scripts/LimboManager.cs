@@ -1,39 +1,43 @@
 using UnityEngine;
 using UnityEngine.Tilemaps; // Tilemap kullanıyorsanız bu kütüphane şart
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class LimboManager : MonoBehaviour
 {
     [Header("Fiziksel Colliderlar")]
-    public GameObject bodyColliderA;
-    public GameObject feetColliderA;
-    public GameObject bodyColliderB;
-    public GameObject feetColliderB;
+    public GameObject bodyColliderHeaven;
+    public GameObject feetColliderHeaven;
+    public GameObject bodyColliderHell;
+    public GameObject feetColliderHell;
     
     [Header("Grid Referansları")]
-    public GameObject gridA; // Dünya A'nın ana Grid objesi
-    public GameObject gridB; // Dünya B'nın ana Grid objesi
+    public GameObject gridHeaven; // Dünya A'nın ana Grid objesi
+    public GameObject gridHell; // Dünya B'nın ana Grid objesi
     
-    private Tilemap[] tilemapsA;
-    private Tilemap[] tilemapsB;
-    
+    private Tilemap[] tilemapsHeaven;
+    private Tilemap[] tilemapsHell;
     
     [Header("Görsel Ayarlar")]
     [Range(0, 1)] public float activeAlpha = 1f;    // Aktif dünyanın netliği
-    [Range(0, 1)] public float inactiveAlpha = 0.2f; // Pasif dünyanın şeffaflığı
+    [Range(0, 1)] public float inactiveAlpha = 0f; // Pasif dünyanın şeffaflığı
 
     [Header("Oyuncu Ayarları")]
     public Animator animator;
     public RuntimeAnimatorController baseController;
-    public AnimatorOverrideController overrideB;
+    public AnimatorOverrideController overrideHell;
 
-    private bool isWorldA = true;
+    [Header("Arkaplanlar")]
+    public GameObject heavenBackground;
+    public GameObject hellBackground;
+
+    bool _isHeaven = true;
 
     void Start()
     {
         // Başlangıçta tüm Tilemap'leri hafızaya al (Performans için önemli)
-        tilemapsA = gridA.GetComponentsInChildren<Tilemap>();
-        tilemapsB = gridB.GetComponentsInChildren<Tilemap>();
+        tilemapsHeaven = gridHeaven.GetComponentsInChildren<Tilemap>();
+        tilemapsHell = gridHell.GetComponentsInChildren<Tilemap>();
 
         // İlk dünya durumunu ayarla
         UpdateDimensionVisuals();
@@ -43,27 +47,31 @@ public class LimboManager : MonoBehaviour
     {
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            isWorldA = !isWorldA;
+            _isHeaven = !_isHeaven;
             UpdateDimensionVisuals();
         }
     }
 
     void UpdateDimensionVisuals()
     {
-        bodyColliderA.SetActive(isWorldA);
-        feetColliderA.SetActive(isWorldA);
+        bodyColliderHeaven.SetActive(_isHeaven);
+        feetColliderHeaven.SetActive(_isHeaven);
         
-        bodyColliderB.SetActive(!isWorldA);
-        feetColliderB.SetActive(!isWorldA);
+        bodyColliderHell.SetActive(!_isHeaven);
+        feetColliderHell.SetActive(!_isHeaven);
         
         // Dünya A'yı güncelle
-        SetAlphaForGroup(tilemapsA, isWorldA ? activeAlpha : inactiveAlpha);
+        SetAlphaForGroup(tilemapsHeaven, _isHeaven ? activeAlpha : inactiveAlpha);
         
         // Dünya B'yi güncelle
-        SetAlphaForGroup(tilemapsB, isWorldA ? inactiveAlpha : activeAlpha);
+        SetAlphaForGroup(tilemapsHell, _isHeaven ? inactiveAlpha : activeAlpha);
 
         // Animasyon kontrolcüsünü değiştir
-        animator.runtimeAnimatorController = isWorldA ? baseController : overrideB;
+        animator.runtimeAnimatorController = _isHeaven ? baseController : overrideHell;
+        
+        // isHeaven a göre background game object set active
+        heavenBackground.SetActive(_isHeaven);
+        hellBackground.SetActive(!_isHeaven);
     }
 
     void SetAlphaForGroup(Tilemap[] maps, float alpha)
