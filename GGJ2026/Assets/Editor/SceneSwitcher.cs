@@ -9,6 +9,18 @@ public static class SceneSwitcher
         EditorSceneManager.OpenScene("Assets/Scenes/SampleScene.unity");
     }
     
+    [MenuItem("Scenes/Parallax Scene")]
+    public static void OpenParallaxScene()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/ParallaxScene.unity");
+    }
+    
+    [MenuItem("Scenes/Entrance Scene")]
+    public static void OpenEntranceScene()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/EntranceScene.unity");
+    }
+    
     /*
     [MenuItem("Scenes/Main Menu")]
     public static void OpenMainMenu()
