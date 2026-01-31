@@ -16,7 +16,7 @@ TagManager:
   - HellObstacles
   - Player
   - Confiner
-  - 
+  - Interactables
   - 
   - 
   - 
@@ -58,6 +58,9 @@ TagManager:
     locked: 0
   - name: Obstacles
     uniqueID: 1218691599
+    locked: 0
+  - name: Interactables
+    uniqueID: 4017468117
     locked: 0
   - name: Player
     uniqueID: 1195812453

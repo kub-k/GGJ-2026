@@ -5,27 +5,35 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private float jumpSpeed = 5f;
+    [SerializeField] private Vector2 deathKick = new Vector2(10f, 10f);
     
     private Vector2 _moveInput;
     private Rigidbody2D _rb;
     
-    private BoxCollider2D CurrentFeetCollider => GetActiveCollider();
+    private CapsuleCollider2D CurrentFeetCollider => GetActiveFeetCollider();
+    private BoxCollider2D CurrentBodyCollider => GetActiveBodyCollider();
     Animator _animator;
+
+    private bool _isAlive;
     
     void Start()
     {
+        _isAlive = true;
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
     }
     
     void Update()
     {
+        if (!_isAlive) return;
         Run();
         FlipSprite();
         Die();
     }
     
-    private BoxCollider2D GetActiveCollider()
+    
+    //these methods find the current colliders (hell or heaven, depending on the world)
+    private BoxCollider2D GetActiveBodyCollider()
     {
         // Alt objelerdeki tüm BoxCollider2D'leri tara
         BoxCollider2D[] colliders = GetComponentsInChildren<BoxCollider2D>();
@@ -36,20 +44,30 @@ public class PlayerMovement : MonoBehaviour
         }
         return null;
     }
+    
+    private CapsuleCollider2D GetActiveFeetCollider()
+    {
+        // Alt objelerdeki tüm BoxCollider2D'leri tara
+        CapsuleCollider2D[] colliders = GetComponentsInChildren<CapsuleCollider2D>();
+        foreach (var col in colliders)
+        {
+            // Hangi obje aktifse (DimensionManager tarafından açılmışsa) onu döndür
+            if (col.gameObject.activeInHierarchy) return col;
+        }
+        return null;
+    }
 
     void OnMove(InputValue value)
     {
+        if (!_isAlive) return;
        _moveInput = value.Get<Vector2>(); 
     }
     
     void OnJump(InputValue value)
     {
-        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellGround", "HeavenGround"))) { return;}
-        
-        if(value.isPressed)
-        {
-            _rb.linearVelocity += new Vector2 (0f, jumpSpeed);
-        }
+        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellGround", "HeavenGround")) 
+            || !value.isPressed || !_isAlive) return; 
+        _rb.linearVelocity += new Vector2 (0f, jumpSpeed);
     }
 
 
@@ -75,8 +93,12 @@ public class PlayerMovement : MonoBehaviour
     
     void Die()
     {
-        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")) ) return;
-        Debug.Log("you died!");
+        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")) &&
+            (!CurrentBodyCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")))) return;
+        _isAlive = false;
+        _rb.linearVelocity = new Vector2 (0, 0);
+        _rb.linearVelocity = deathKick;
+        Debug.Log("you died");
     }
 
 }
