@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +12,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] private float maskTimer;
     [SerializeField] private TextMeshProUGUI timerText;
     private float _maskDuration;
-    [SerializeField] private GameObject imageTextCanvas;
+    [SerializeField] private GameObject infoText;
     
     void Awake()
     {
@@ -27,7 +30,8 @@ public class GameSession : MonoBehaviour
     
     void Start()
     {
-        imageTextCanvas.SetActive(true);
+        infoText.SetActive(false);
+        
         _maskDuration = FindFirstObjectByType<LimboManager>().maskDuration;
         int minutes = Mathf.FloorToInt(_maskDuration); // tam sayı kısmı
         int fraction = Mathf.FloorToInt((_maskDuration * 100) % 100); // virgülden sonraki iki hane
@@ -38,15 +42,7 @@ public class GameSession : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            imageTextCanvas.SetActive(false);
-            return;
-        }
-        else
-        {
-            imageTextCanvas.SetActive(true);
-        }
+       
         maskTimer = FindFirstObjectByType<LimboManager>().GetCurrentMaskTime();
         
         int minutes = Mathf.FloorToInt(maskTimer); // tam sayı kısmı
@@ -79,13 +75,22 @@ public class GameSession : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            SceneManager.LoadScene(1);
+            //coroutine 5 sn görünsün textmesh startta disable burda enable
+            StartCoroutine(ShowInformation());
             return;
         }
         playerLives--;
         int activeScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeScene);
         livesText.text = playerLives.ToString();
+    }
+    
+    IEnumerator ShowInformation()
+    {
+        infoText.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        infoText.SetActive(false);
+        SceneManager.LoadScene(1);
     }
     
 }
