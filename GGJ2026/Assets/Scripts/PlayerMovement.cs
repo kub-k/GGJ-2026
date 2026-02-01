@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellGround", "HeavenGround")) 
             || !value.isPressed || !_isAlive) return; 
         _rb.linearVelocity += new Vector2 (0f, jumpSpeed);
+        _animator.SetTrigger("Jump");
     }
     
     void ClimbLadder()
@@ -80,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
         if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))) 
         { 
             _rb.gravityScale = _gravityScaleAtStart;
-            //_animator.SetBool("isClimbing", false);
             return;
         }
         
@@ -89,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
         _rb.gravityScale = 0f;
 
         bool playerHasVerticalSpeed = Mathf.Abs(_rb.linearVelocity.y) > Mathf.Epsilon;
-        //_animator.SetBool("isClimbing", playerHasVerticalSpeed);
     }
 
 
@@ -119,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
         if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")) &&
             (!CurrentBodyCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")))) return;
         _isAlive = false;
+        _animator.SetTrigger("Death");
         _rb.linearVelocity = new Vector2 (0, 0);
         _rb.linearVelocity = deathKick;
         StartCoroutine(WaitForDeath());

@@ -66,8 +66,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.003956967, y: -0.5587202}
-  m_Size: {x: 0.5147228, y: 0.14222886}
+  m_Offset: {x: 0.012072915, y: -0.5587202}
+  m_Size: {x: 0.34428224, y: 0.14222886}
   m_Direction: 1
 --- !u!1 &3406878187356269892
 GameObject:
@@ -168,8 +168,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.12810355, y: -0.6819655}
-  m_Size: {x: 0.58082885, y: 0.1295035}
+  m_Offset: {x: 0.13520494, y: -0.6819655}
+  m_Size: {x: 0.37183693, y: 0.1295035}
   m_Direction: 1
 --- !u!1 &4504460225630673836
 GameObject:
@@ -528,7 +528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   runSpeed: 5
   jumpSpeed: 15
-  deathKick: {x: 0, y: 30}
+  climbSpeed: 5
+  deathKick: {x: 5, y: 20}
 --- !u!95 &1460566568791612687
 Animator:
   serializedVersion: 7
