@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 56
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,17 +103,28 @@ TextureImporter:
       name: mushrum6_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 2
-        width: 53
-        height: 60
+        x: 6
+        y: 4
+        width: 51
+        height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      physicsShape:
+      - - {x: -24.5, y: -4}
+        - {x: -6.5, y: -4}
+        - {x: -13.5, y: -28}
+        - {x: 8.5, y: -29}
+        - {x: 9.5, y: -5}
+        - {x: 25.5, y: -5}
+        - {x: 25.5, y: 3}
+        - {x: 20.5, y: 5}
+        - {x: 7.5, y: 29}
+        - {x: -1.5, y: 28}
+        - {x: -24.5, y: 5}
+      tessellationDetail: 0
       bones: []
       spriteID: 1c9728024963e7160800000000000000
       internalID: 7025112478573033921
@@ -125,7 +136,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 410dfc15545f5834797b04019e492081
     internalID: 0
     vertices: []
     indices: 
