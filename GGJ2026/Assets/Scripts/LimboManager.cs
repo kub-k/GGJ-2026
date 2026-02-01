@@ -115,5 +115,10 @@ public class LimboManager : MonoBehaviour
             tm.color = c;
         }
     }
+
+    public bool GetHeavenState()
+    {
+        return _isHeaven;
+    }
 }
 

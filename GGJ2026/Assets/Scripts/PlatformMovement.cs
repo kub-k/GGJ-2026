@@ -9,14 +9,31 @@ public class PlatformMovement : MonoBehaviour
     private Vector3 _nextPos;
     private Vector3 _lastPosition;
     private Rigidbody2D _playerRb;
+    private bool _isHeaven;
+    SpriteRenderer _spriteRenderer;
+    
     void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _nextPos = pointB.position;
         _lastPosition = transform.position;
     }
     
     void FixedUpdate()
     {
+        _isHeaven = FindFirstObjectByType<LimboManager>().GetHeavenState();
+        var platformLayer = gameObject.layer;
+        bool isVisible = false;
+
+        // katman ve durum eşleşmesi kontrolü
+        if (platformLayer == 6) isVisible = _isHeaven;
+        else if (platformLayer == 7) isVisible = !_isHeaven;
+
+        // alpha değerinin tek seferde atanması
+        Color c = _spriteRenderer.color;
+        c.a = isVisible ? 1f : 0f;
+        _spriteRenderer.color = c;
+        
         transform.position = Vector3.MoveTowards(transform.position, _nextPos,
             moveSpeed * Time.fixedDeltaTime);
 
