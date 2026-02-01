@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         Die();
+        ClimbLadder();
     }
     
     
