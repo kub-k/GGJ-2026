@@ -55,7 +55,7 @@ MonoBehaviour:
   - name: HeavenMusic
     clip: {fileID: 8300000, guid: 30393775bc1268b44be05a992bf86c1a, type: 3}
     audioMixerGroup: {fileID: -1744428488816796914, guid: ca0a9da0b1ae5014984fae0fbb6726e8, type: 2}
-    volume: 0.509
+    volume: 0.8
     pitch: 1
     source: {fileID: 0}
     loop: 1

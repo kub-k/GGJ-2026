@@ -6,6 +6,10 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] private int playerLives = 3;
     [SerializeField] private TextMeshProUGUI livesText;
+    [SerializeField] private float maskTimer;
+    [SerializeField] private TextMeshProUGUI timerText;
+    private float _maskDuration;
+    [SerializeField] private GameObject imageTextCanvas;
     
     void Awake()
     {
@@ -23,7 +27,32 @@ public class GameSession : MonoBehaviour
     
     void Start()
     {
+        imageTextCanvas.SetActive(true);
+        _maskDuration = FindFirstObjectByType<LimboManager>().maskDuration;
+        int minutes = Mathf.FloorToInt(_maskDuration); // tam sayı kısmı
+        int fraction = Mathf.FloorToInt((_maskDuration * 100) % 100); // virgülden sonraki iki hane
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, fraction);
+        
         livesText.text = playerLives.ToString();
+    }
+
+    void FixedUpdate()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            imageTextCanvas.SetActive(false);
+            return;
+        }
+        else
+        {
+            imageTextCanvas.SetActive(true);
+        }
+        maskTimer = FindFirstObjectByType<LimboManager>().GetCurrentMaskTime();
+        
+        int minutes = Mathf.FloorToInt(maskTimer); // tam sayı kısmı
+        int fraction = Mathf.FloorToInt((maskTimer * 100) % 100); // virgülden sonraki iki hane
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, fraction);
+        
     }
     
     private void ResetGameSession()

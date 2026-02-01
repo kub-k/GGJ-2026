@@ -136,5 +136,10 @@ public class LimboManager : MonoBehaviour
     {
         return _isHeaven;
     }
+    
+    public float GetCurrentMaskTime()
+    {
+        return currentMaskTime;
+    }
 }
 
