@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5518350883842386600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1343420322153195628}
+  - component: {fileID: 3025641633591927988}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1343420322153195628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5518350883842386600}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3025641633591927988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5518350883842386600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab9c19ed17c0bd4899e58be4ab23d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  sounds:
+  - name: Mask
+    clip: {fileID: 8300000, guid: fadf261eb1677ca4f8e090a3ec45b9d0, type: 3}
+    audioMixerGroup: {fileID: 5262808385945237521, guid: ca0a9da0b1ae5014984fae0fbb6726e8, type: 2}
+    volume: 0.449
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HeavenMusic
+    clip: {fileID: 8300000, guid: 30393775bc1268b44be05a992bf86c1a, type: 3}
+    audioMixerGroup: {fileID: -1744428488816796914, guid: ca0a9da0b1ae5014984fae0fbb6726e8, type: 2}
+    volume: 0.509
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: HellMusic
+    clip: {fileID: 8300000, guid: b8cc7739f31319449b0c23581493b5f2, type: 3}
+    audioMixerGroup: {fileID: -1744428488816796914, guid: ca0a9da0b1ae5014984fae0fbb6726e8, type: 2}
+    volume: 0.449
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  fadeDuration: 0.5

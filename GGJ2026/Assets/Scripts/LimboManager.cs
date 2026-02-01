@@ -62,6 +62,10 @@ public class LimboManager : MonoBehaviour
                 return;
             }
             _isHeaven = !_isHeaven;
+            
+            //maske ses efekti
+            AudioManager.Instance.PlaySFX("Mask");
+            
             UpdateDimensionVisuals();
         }
 
@@ -84,6 +88,7 @@ public class LimboManager : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     void UpdateDimensionVisuals()
     {
         bodyColliderHeaven.SetActive(_isHeaven);
@@ -104,7 +109,18 @@ public class LimboManager : MonoBehaviour
         // isHeaven a göre background game object set active
         heavenBackground.SetActive(_isHeaven);
         hellBackground.SetActive(!_isHeaven);
+        
+        //müziği değiştir
+        if (_isHeaven)
+        {
+            AudioManager.Instance.SwitchMusic("HellMusic", "HeavenMusic");
+        }
+        else
+        {
+            AudioManager.Instance.SwitchMusic("HeavenMusic", "HellMusic");
+        }
     }
+        
 
     void SetAlphaForGroup(Tilemap[] maps, float alpha)
     {

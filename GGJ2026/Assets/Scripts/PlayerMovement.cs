@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private float jumpSpeed = 5f;
+    [SerializeField] float climbSpeed = 5f;
     [SerializeField] private Vector2 deathKick = new Vector2(10f, 10f);
     
     private Vector2 _moveInput;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private CapsuleCollider2D CurrentFeetCollider => GetActiveFeetCollider();
     private BoxCollider2D CurrentBodyCollider => GetActiveBodyCollider();
     Animator _animator;
+    float _gravityScaleAtStart;
 
     private bool _isAlive;
     
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         _isAlive = true;
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _gravityScaleAtStart = _rb.gravityScale;
     }
     
     void Update()
@@ -70,6 +73,24 @@ public class PlayerMovement : MonoBehaviour
             || !value.isPressed || !_isAlive) return; 
         _rb.linearVelocity += new Vector2 (0f, jumpSpeed);
     }
+    
+    void ClimbLadder()
+    {
+        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))) 
+        { 
+            _rb.gravityScale = _gravityScaleAtStart;
+            //_animator.SetBool("isClimbing", false);
+            return;
+        }
+        
+        Vector2 climbVelocity = new Vector2 (_rb.linearVelocity.x, _moveInput.y * climbSpeed);
+        _rb.linearVelocity = climbVelocity;
+        _rb.gravityScale = 0f;
+
+        bool playerHasVerticalSpeed = Mathf.Abs(_rb.linearVelocity.y) > Mathf.Epsilon;
+        //_animator.SetBool("isClimbing", playerHasVerticalSpeed);
+    }
+
 
 
     void Run()
@@ -100,7 +121,6 @@ public class PlayerMovement : MonoBehaviour
         _rb.linearVelocity = new Vector2 (0, 0);
         _rb.linearVelocity = deathKick;
         StartCoroutine(WaitForDeath());
-        Debug.Log("you died");
     }
     
     IEnumerator WaitForDeath()
