@@ -30,7 +30,7 @@ public class GameSession : MonoBehaviour
     {
         //load the first scene (it might be first level or main menu)
         FindFirstObjectByType<ScenePersist>().ResetScene();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Destroy(gameObject); //we need to reset all the process
     }
     
@@ -48,6 +48,11 @@ public class GameSession : MonoBehaviour
     
     private void TakeLife()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            SceneManager.LoadScene(1);
+            return;
+        }
         playerLives--;
         int activeScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeScene);
