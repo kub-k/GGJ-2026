@@ -2039,7 +2039,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2061,7 +2061,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2070,6 +2070,72 @@ TextureImporter:
       bones: []
       spriteID: fb780324354586c4db924149bf40afda
       internalID: -890148158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 45
+        width: 13
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5db92b0a826b349b41690aeef6ff50
+      internalID: 671265039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 161
+        width: 38
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 636768e6f03edaf4b98b1f4a3b583166
+      internalID: 2028485917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moving_platform_heaven
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647744f5fd575b74cb1329eead12d242
+      internalID: -845610761
       vertices: []
       indices: 
       edges: []
@@ -2098,6 +2164,8 @@ TextureImporter:
       Plant3: 2018053615
       Plant4: -400365580
       Plant5: -116768579
+      Sprites_0: 671265039
+      Sprites_1: 2028485917
       Stone1: 1746087828
       Stone2: -2145294881
       Stone3: -1019068024
@@ -2177,6 +2245,7 @@ TextureImporter:
       Tree6: 1892446599
       Tree7: -1897294959
       Tree8: -1485331619
+      moving_platform_heaven: -845610761
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
