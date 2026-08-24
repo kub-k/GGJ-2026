@@ -6,6 +6,17 @@ You are a soul trapped in Limbo, climbing through three levels between Hell and 
 
 🎮 [Play / download on the Global Game Jam site](https://globalgamejam.org/games/2026/3-floors-limbo-3) · ▶️ [Gameplay video](https://youtu.be/c4a90h881CM)
 
+## Screenshots
+
+<p>
+  <img src="screenshots/screenshot-1.png" width="49%" alt="Player standing on a hillside in Limbo, with lives and mask-timer HUD" />
+  <img src="screenshots/screenshot-2.png" width="49%" alt="Intro dialogue explaining the devil's mask mechanic" />
+</p>
+<p>
+  <img src="screenshots/screenshot-3.png" width="49%" alt="Player jumping between platforms in a green mountain area" />
+  <img src="screenshots/screenshot-4.png" width="49%" alt="Player character in the Hell level, navigating platforms over lava" />
+</p>
+
 ## About
 
 | | |
