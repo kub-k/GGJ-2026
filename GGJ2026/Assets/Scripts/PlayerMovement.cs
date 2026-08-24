@@ -74,19 +74,22 @@ public class PlayerMovement : MonoBehaviour
             || !value.isPressed || !_isAlive) return; 
         _rb.linearVelocity += new Vector2 (0f, jumpSpeed);
         _animator.SetTrigger("Jump");
+        _animator.SetBool("IsGrounded", false);
     }
     
     void ClimbLadder()
     {
-        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))) 
-        { 
+        if (!CurrentFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
             _rb.gravityScale = _gravityScaleAtStart;
+            _animator.SetBool("IsClimbing", false);
             return;
         }
-        
+
         Vector2 climbVelocity = new Vector2 (_rb.linearVelocity.x, _moveInput.y * climbSpeed);
         _rb.linearVelocity = climbVelocity;
         _rb.gravityScale = 0f;
+        _animator.SetBool("IsClimbing", true);
 
         bool playerHasVerticalSpeed = Mathf.Abs(_rb.linearVelocity.y) > Mathf.Epsilon;
     }
@@ -119,7 +122,6 @@ public class PlayerMovement : MonoBehaviour
             (!CurrentBodyCollider.IsTouchingLayers(LayerMask.GetMask("HellObstacles")))) return;
         _isAlive = false;
         _animator.SetTrigger("Death");
-        _rb.linearVelocity = new Vector2 (0, 0);
         _rb.linearVelocity = deathKick;
         StartCoroutine(WaitForDeath());
     }
@@ -129,6 +131,20 @@ public class PlayerMovement : MonoBehaviour
         //we need to wait a little bit before death, so our animation can play
         yield return new WaitForSeconds(2f);
         FindFirstObjectByType<GameSession>().ProcessPlayerDeath();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & LayerMask.GetMask("HellGround", "HeavenGround")) == 0) return;
+
+        //tell the animator we've actually landed, instead of waiting for the jump clip to run out
+        _animator.SetBool("IsGrounded", true);
+
+        //once the death bounce lands, kill all remaining velocity so the corpse doesn't slide
+        if (!_isAlive)
+        {
+            _rb.linearVelocity = Vector2.zero;
+        }
     }
 
 }
