@@ -4002,7 +4002,7 @@ Transform:
   m_GameObject: {fileID: 413970606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.54, y: -0.03999988, z: -10}
+  m_LocalPosition: {x: -1.1035023, y: -0.03999988, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4087,7 +4087,7 @@ PrefabInstance:
       objectReference: {fileID: 356114192}
     - target: {fileID: 7797987445096357330, guid: 9e17e59ca6ba65a419b1ba6fa8f73e21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.54
+      value: -1.1035023
       objectReference: {fileID: 0}
     - target: {fileID: 7797987445096357330, guid: 9e17e59ca6ba65a419b1ba6fa8f73e21, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9245,7 +9245,7 @@ GameObject:
   - component: {fileID: 1937542401}
   - component: {fileID: 1937542400}
   m_Layer: 12
-  m_Name: Hell Climbing Tlemap
+  m_Name: Hell Climbing Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9484,6 +9484,16 @@ Tilemap:
   - first: {x: 10, y: -2, z: 0}
     second:
       serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 10, y: -1, z: 0}
+    second:
+      serializedVersion: 2
       m_TileIndex: 2
       m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
@@ -9495,7 +9505,7 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 2e5dbbc6f5609f44999e9a6da9e79435, type: 2}
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 66c919f949d846649a4af43ba1a1c7ae, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 9e00cc81e4b27a740bc9013a86430671, type: 2}
@@ -9504,10 +9514,10 @@ Tilemap:
     m_Data: {fileID: -6447157988056428897, guid: b645eb0bd57f4e34e9b2918a47347ade, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 2758292539196054288, guid: 0a27254ed39230c46bbea77f8df0d8b2, type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: 282363235681553761, guid: 9ec15629885308948a32ad7cb76ca8dc, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 5
+  - m_RefCount: 6
     m_Data:
       e00: 1
       e01: 0
@@ -9526,7 +9536,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 5
+  - m_RefCount: 6
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
