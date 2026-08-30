@@ -41,8 +41,8 @@ You have three lives. Falling or dying too many times sends you back to the star
 
 ## Team
 
-- [Elif](https://github.com/chibielif)
-- [Kübra](https://github.com/kub-k)
+- [Elif](https://github.com/chibielif) — player systems, gameplay/session logic, level transitions, audio
+- [Kübra](https://github.com/kub-k) — level design, UI, scene layout
 
 ## Credits & third-party assets
 
